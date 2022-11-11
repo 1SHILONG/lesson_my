@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>代码设计模式之代理模式</h1>
+    <script>
+    // ? 某某某
+    // document.write('某某某')
+    // 对象字面量 描述功能 表现力
+    // 对象由属性和方法构成
+    // 动作
+    let xxx = {
+        name: 'xxx',
+        age: 22,
+        hometown: '浮梁',
+        // hasGirlfriend: false
+        isSingle: true,
+        // 形参
+        sendFlower(o) {
+            o.receiveFlower(xxx)
+        }
+    }
+    let xm = {
+        name: '小美',
+        age: 18,
+        hometown: '赣州',
+        room: '201',
+        receiveFlower(o) {
+            console.log(`${this.name}收到了${o.name}花`)
+        }
+    }
+    // 代理模式
+    let xh = {
+        name: '小红',
+        room: '201',
+        hometown: '丰城',
+        // 接口 当不同的对象，具有相同的方法时，可以互换使用
+        receiveFlower(o) {
+            xm.receiveFlower(o)
+        }
+    }
+
+    xxx.sendFlower(xh)
+    </script>
+</body>
+</html>

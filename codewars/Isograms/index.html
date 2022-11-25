@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ <script>
+function isIsogram(str) {
+  if(str === '') return true;
+      let arr = str.toLowerCase().split('');
+      let obj = {};
+      for(let i = 0; i < arr.length-1; i++) {
+        let char = arr[i]; 
+        if (obj[char] == 1) {
+            return false;
+        } else {
+             obj[char] = 1;
+        }
+      }
+      return true;
+}
+isIsogram();
+ </script>   
+</body>
+</html>

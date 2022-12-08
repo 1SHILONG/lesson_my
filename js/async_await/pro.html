@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>thenable</title>
+</head>
+<body>
+<p id="msg">当前没有数据</p>
+<ul id="list">
+
+</ul>
+<script>
+// 有一个异步任务 耗时, 再做某件事情, thenable 
+(function() {
+    const list = document.querySelector('#list');
+    const posts = JSON.parse(localStorage.getItem('posts')) || [];
+    // 先取数据
+    // 添加到ul 上
+    if (posts.length == 0) {
+    fetch('http://localhost:3000/posts')
+        // 二进制流
+        .then(res => res.json())
+        //  花时间 类型转换
+        .then(res => {
+          res.forEach(item => {
+            list.innerHTML  +=`
+            <li>
+                ${item.title}
+            </li>
+            `
+          })
+          document.getElementById('msg').style.display = 'none';
+          // console.log(res);
+          // 数据就来了吧?
+        })
+  } else {
+      renderPost(posts);
+  }
+  function renderPost(items) {
+    item.forEach(item => {
+      list.innerHTML  +=`
+            <li>
+                ${item.title}
+            </li>
+            `
+    })
+    document.getElementById('msg').style.display = 'none';
+  }
+})()
+</script>
+</body>
+</html>

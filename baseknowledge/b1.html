@@ -8,6 +8,18 @@
 </head>
 <body>
 <script>
+ function Person(name,age) {
+    this.name = name;
+    this.age = age;
+ }  
+function myNew(constrctor,name,age) {
+    const obj = {};
+    obj.__proto__ = constrctor.prototype;
+    constrctor.call(obj,name,age)
+    return obj
+}
+let fu = myNew(Person,"付总",18);
+// bac(o,"付总",18);
     // var age = prompt ('请输入年龄');
     // str = '你今年'+age+'岁';
     // alert(str);

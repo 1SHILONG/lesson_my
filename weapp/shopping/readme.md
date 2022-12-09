@@ -46,3 +46,27 @@
   3. 高手还会把 数据请求 模块化独立于Page
     service 网络服务 新的目录
   4. 模块化 import  form''
+
+- 列表数据渲染
+  1. scroll-view
+    bindscroll 回到首页？
+    bindscrolltolower="loadMore"  底部, 加载更多
+    concat 分页  ?page=1
+    切换tab ?type=
+
+- 小程序的架构
+  - components  组件
+    细化界面开发, 复用
+  - service 跟api 接口相关
+    直接wx.request  缺点? 不易管理
+    统一管理
+
+- 接入接口
+  page home 不直接调用wx.request 
+  从service 提供 
+
+- 页面开发, 新思路
+  页面不在由标签构成  , 而由组件构成
+  把一个页面任务, 分成若干组件开发任务,
+  - 共享,  多个页面 /components
+  - 不共享, 只在特定的页面上出现, 页面简洁,   就放到page目录下

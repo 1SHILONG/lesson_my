@@ -1,7 +1,8 @@
 // pages/home/home.js
 // 模块化
 import {
-  getMultiData
+  getMultiData,
+  getProducts
 } from '../../service/home.js'
 Page({
 
@@ -11,9 +12,11 @@ Page({
   data: {
     banners: [
     ],
-    showTabControl: true,
+    showTabControl: false,
     titles: ["流行", "新款", "精选"],
-    topPosition: 0
+    topPosition: 0,
+    page: 1
+
   },
   tabClick(e) {
     console.log(e);
@@ -21,8 +24,14 @@ Page({
   loadMore() {
     console.log("到底了");
   },
-  scrollPosition() {
-
+  scrollPosition(e) {
+    // console.log(e);
+    const position = e.detail.scrollTop;
+    if (position > 300) {
+        this.setData({
+          showTabControl: true
+        })
+    }
   },
   /**
    * 生命周期函数--监听页面加载
@@ -33,6 +42,13 @@ Page({
   },
   _getData() {
     this._getMultiData();
+    this._getGoods();
+  },
+  _getGoods() {
+    getProducts()
+      .then(res => {
+        console.log(res);
+      })
   },
   _getMultiData() {
     // 耗时的http 请求任务
@@ -49,6 +65,7 @@ Page({
         })
         this.setData({
           banners: banners,
+          recommends: res.data.recommend.list
         });
         // console.log(banners);
       })

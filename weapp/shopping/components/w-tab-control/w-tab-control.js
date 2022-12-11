@@ -25,6 +25,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    setCurrentIndex(index) {
+      this.setData({
+        currentIndex: index
+      })
+    },
     itemClick(e) {
       // console.log('--------------')
       this.setData({

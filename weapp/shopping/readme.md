@@ -70,3 +70,37 @@
   把一个页面任务, 分成若干组件开发任务,
   - 共享,  多个页面 /components
   - 不共享, 只在特定的页面上出现, 页面简洁,   就放到page目录下
+
+- 首页列表复杂业务梳理
+  1. 查询参数有两个
+    page
+    type
+    先测试接口
+    http://152.136.185.210:7878/api/hy66/home/data?page=${page}
+    &type=${type}
+  2. goods 列表  简单
+    数据驱动的列表
+  3. 默认   type pop page = 1
+
+- w-goods w-goods-item 组合
+  1. 页面是由组件构成的,  而不是标签
+  2. 组件就负责渲染,  一个业务,  properties  triggerEvent
+  3.  容器组件
+    w-goods 容器组件    集合
+    w-goods-item    功能
+  4.  goods: {
+    [POP]: {
+      list: [],
+      page: 1
+    },
+     [NEW]: {
+      list: [],
+      page: 1
+    },
+     [SELL]: {
+      list: [],
+      page: 1
+    },
+  }
+  开始时都请求一下,   切换的tab时,  马上出来
+  getProductData(type)

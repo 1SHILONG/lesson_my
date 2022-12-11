@@ -7,6 +7,17 @@ export const getMultiData = () => {
     url: '/home/multidata',
   })
 }
+// http://152.136.185.210:7878/api/hy66
+// /home/data?page=${page}&type=${type}
+export const getProduct = (type, page) => {
+  return request({
+    url: '/home/data',
+    data: {
+      type,
+      page
+    }
+  })
+}
 
 export const getProducts = (type,page) => {
   return request({

@@ -26,15 +26,19 @@
     <w-swiper images="{{banners}}"/>
     <w-recommend recommends="{{recommends}}"/>
     <!-- 本周流行 -->
-    <w-feature />
-    <!-- tab -->
-    <w-tab-control class="tap-control" titles="{{titles}}"
-    bind:tabclick="tabClick"/>
+    <w-feature /> 
+   <!-- tab -->
+    <w-tab-control class="tab-control" 
+      
+      titles="{{titles}}"
+      bind:tabclick="tabClick"
+    />
+
+    <w-goods goodslist="{{goods[currentType].list}}"/>
     <!-- 商品列表 -->
     <!-- <w-goods /> -->
     <!-- 返回到顶部 -->
-    <!-- <w-back-top></w-back-top> -->
-    <view style="height: 500vh;">
-    </view>
+    <w-back-top  bindtap="onBackTop" wx:if="{{showBackTop}}"></w-back-top>
+    
   </scroll-view>
 </view>

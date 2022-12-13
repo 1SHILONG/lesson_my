@@ -1,10 +1,10 @@
-// components/w-goods-item/w-goods-item.js
+// pages/detail/childCpns/w-bottom-bar/w-bottom-bar.js
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    goodsitem: {
+    bottomBar: {
       type: Object,
       value: {}
     }
@@ -21,12 +21,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    itemClick(e) {
-      console.log(this.data);
-      const iid = this.data.goodsitem.iid;
-      wx.navigateTo({
-        url: `/pages/detail/detail?iid=${iid}`
-      })
+    // 为啥要向页面汇报? 
+
+    onAddCart() {
+      this.triggerEvent('addcart')
     }
   }
 })

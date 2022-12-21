@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<body>
+   <script>
+      // 递归 自底向下 stack 
+      // 自下向上 1 2 f(3)
+      const climbStairs = (n) => {
+         if (n == 1 || n == 2) { // 递归退出条件， 起始值
+            return n;
+         }
+         // 计算公式 f(n) = f(n-1) + f(n-2) 迭代
+         // climbStairs
+         let p1 = 1,
+             p2 = 2;
+         // 用迭代代替递归 省去了函数入栈的开销
+         for (let i = 3; i <= n; i++) {
+            p2 = p2 + p1;
+            p1 = p2 - p1;
+         }
+         return p2;
+      }
+   </script>
+</body>
+</html>

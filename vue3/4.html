@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+// 手写Vue 
+
+function observer(value) {
+    if (!value || (typeof value !== 'object')) { // null 
+        return ;
+    }
+    Object
+        .keys(value)
+        .forEach((key) => {
+            // console.log(key)
+            // 定义响应式
+            defineReactive(value, key, value[key]) 
+        })
+}
+
+class Vue {
+    constructor(options) {
+        this._data = options.data; // 引用式赋值
+        // 观察者
+        observer(this._data); // 对他监听
+    }
+}
+
+function defineReactive(obj, key, val) {
+  // let val2
+    Object.defineProperty(obj, key, {
+      enumerable: true,
+      writeable: true,
+      // 响应属性的
+      get() {
+        console.log(`读取了${key}属性`);
+        return val;
+      },
+      set: function reactiveSetter(newVal) {
+        if (newVal === val) {
+          return;
+        }
+        val = newVal
+        cb(newVal); // cb  代表修改可
+      }
+    })
+}
+
+function cb(val) {
+    console.log('试图更新了', val);
+}
+
+let o = new Vue({
+    // defineProperty 对象
+    data: {
+        test: "I am test." ,
+        a: 1
+    }
+})
+
+</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "vue_code",
+  "version": "1.0.0",
+  "description": "- 组件通信   - 8种     - props / emit     - eventbus vue2.0 3.0废弃了 事件总线     - provide inject 崛起     - ref/defineExpose      - vuex/pinia     - localStorage     - $parent $child vue2.0 vue3.0废弃     - attrs   - 3类     父子     兄弟组件     跨层级   - 底层原理",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vue/cli": "^5.0.8"
+  }
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>订阅发布者模式|自定义事件 once remove </title>
+</head>
+<body>
+  <button id="myButton">dianji</button>
+  <script>
+    class EventEmitter {
+    constructor() {
+      this.events = {};
+    }
+    // 实现订阅
+    on(type, callBack) {
+      if (!this.events[type]) {
+        this.events[type] = [callBack];
+      } else {
+        this.events[type].push(callBack);
+      }
+    }
+    // 删除订阅
+    off(type, callBack) {
+      if (!this.events[type]) return;
+      this.events[type] = this.events[type].filter((item) => {
+        return item !== callBack;
+      });
+    }
+    // 只执行一次订阅事件
+    once(type, callBack) {
+      function fn() {
+        callBack();
+        this.off(type, fn);
+      }
+      this.on(type, fn);
+    }
+    // 触发事件
+    emit(type, ...rest) {
+      this.events[type] &&
+        this.events[type].forEach((fn) => fn.apply(this, rest));
+    }
+  }
+  
+
+  const event = new EventEmitter();
+  const handle = (...rest) => {
+      console.log(rest);
+    };
+    // 声明了一个自定义事件 订阅了这个事件
+    event.on("click", handle);
+    event.emit("click", 1, 2, 3, 4);
+
+    event.off("click", handle);
+    event.emit("click", 1, 2);
+    event.once("dbClick", () => {
+          console.log(123456);
+        });
+        event.emit("dbClick");
+  event.emit("dbClick");
+  </script>
+</body>
+</html>

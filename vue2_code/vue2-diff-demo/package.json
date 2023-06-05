@@ -1,0 +1,16 @@
+{
+  "name": "vue2-diff-demo",
+  "version": "1.0.0",
+  "description": "- 不用vite 如何把代码跑起来     模块化     vite webpack 企业级的工程化工具     中小型工程化工具 不需要那么复杂 立马把项目跑起来",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel index.html --open"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.22.1",
+    "parcel-bundler": "^1.12.5"
+  }
+}
